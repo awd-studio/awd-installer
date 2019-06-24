@@ -11,12 +11,14 @@ use Composer\Package\PackageInterface;
 class AwdInstaller extends LibraryInstaller
 {
 
+    const AWD_ADDITION_TYPE = 'awd-addition';
+
     /**
      * {@inheritDoc}
      */
     public function supports($packageType)
     {
-        return $packageType === 'awd-addition';
+        return self::AWD_ADDITION_TYPE === $packageType;
     }
 
     /**
