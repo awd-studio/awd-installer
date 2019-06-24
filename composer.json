@@ -1,0 +1,30 @@
+{
+    "name": "awd-studio/awd-installer",
+    "description": "A plugin to use custom installers for composer (see: https://getcomposer.org/doc/articles/plugins.md)",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Karpov",
+            "email": "awd.com.ua@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "composer-plugin-api": "^1.1"
+    },
+    "require-dev": {
+        "composer/composer": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "AwdStudio\\AwdInstaller\\": "src/AwdInstaller/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "class": "AwdStudio\\AwdInstaller\\AwdInstallerPlugin"
+    }
+}
