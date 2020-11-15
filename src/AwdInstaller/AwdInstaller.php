@@ -10,8 +10,8 @@ use Composer\Package\PackageInterface;
 
 class AwdInstaller extends LibraryInstaller
 {
-
-    const AWD_ADDITION_TYPE = 'awd-addition';
+    public const AWD_ADDITION_TYPE = 'awd-addition';
+    private const AWD_ADDITIONS = 'awd-additions';
 
     /**
      * {@inheritDoc}
@@ -34,10 +34,10 @@ class AwdInstaller extends LibraryInstaller
         }
 
         // use path from configuration, otherwise fall back to default
-        if (isset($extra['awd-additions'])) {
-          $extraPath = $extra['awd-additions'];
-          $name = $package->getPrettyName();
-          $path = \str_replace('{$name}', $name, $extraPath);
+        if (isset($extra[self::AWD_ADDITIONS])) {
+            $extraPath = $extra[self::AWD_ADDITIONS];
+            $name = $package->getPrettyName();
+            $path = \str_replace('{$name}', $name, $extraPath);
         } else {
             $path = 'awd';
         }
@@ -48,12 +48,12 @@ class AwdInstaller extends LibraryInstaller
         }
 
         // don't allow unsafe directories
-        $vendorDir = $this->composer->getConfig()->get('vendor-dir', Config::RELATIVE_PATHS) ?? 'vendor';
+        $config = $this->composer->getConfig();
+        $vendorDir = $config->get('vendor-dir', Config::RELATIVE_PATHS) ?? 'vendor';
         if ($path === $vendorDir || $path === '.') {
             throw new \InvalidArgumentException('The path ' . $path . ' is an unsafe installation directory for ' . $package->getPrettyName() . '.');
         }
 
         return $path;
     }
-
 }

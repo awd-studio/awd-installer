@@ -5,21 +5,16 @@ declare(strict_types=1); // strict mode
 namespace AwdStudio\AwdInstaller;
 
 use Composer\Composer;
+use Composer\Config;
 use Composer\IO\IOInterface;
 use Composer\Package\Package;
 use Composer\Util\Filesystem;
 
 final class BinariesResolver
 {
-
-    /** @var IOInterface */
-    private $io;
-
-    /** @var \Composer\Composer */
-    private $composer;
-
-    /** @var \Composer\Config */
-    private $config;
+    private IOInterface $io;
+    private Composer $composer;
+    private Config $config;
 
     /**
      * BinariesResolver constructor.
@@ -103,6 +98,4 @@ final class BinariesResolver
             $this->io->writeError('Target "' . $bin . '" - does not exists!');
         }
     }
-
-
 }

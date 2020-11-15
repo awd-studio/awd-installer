@@ -12,7 +12,6 @@ use Composer\Plugin\PluginInterface;
 
 class AwdInstallerPlugin implements PluginInterface, EventSubscriberInterface
 {
-
     /**
      * {@inheritDoc}
      */
@@ -57,4 +56,19 @@ class AwdInstallerPlugin implements PluginInterface, EventSubscriberInterface
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+        // Does nothing
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+        // Does nothing
+    }
 }
